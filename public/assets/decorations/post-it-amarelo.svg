@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 152 152" role="img">
+  <title>Post-it amarelo em estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round" transform="rotate(-3 76 76)">
+    <!-- sombra -->
+    <path d="M24 26h112v110l-12 6H24z" fill="#0F172A" fill-opacity="0.18"/>
+    <!-- halo de adesivo -->
+    <path d="M18 18h112v110l-12 6H18z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="14"/>
+    <!-- papel -->
+    <path d="M18 18h112v110l-12 6H18z" fill="#FBBF24" stroke="#0F172A" stroke-width="5.5"/>
+    <!-- dobra do canto -->
+    <path d="M118 134l12-6-10-9z" fill="#F8FAEC" stroke="#0F172A" stroke-width="3.5"/>
+    <!-- linhas de escrita sugeridas -->
+    <path d="M34 54h74M34 72h66M34 90h70M34 108h44" stroke="#0F172A" stroke-opacity="0.16" stroke-width="3"/>
+    <!-- brilho -->
+    <path d="M26 26h50" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="3"/>
+  </g>
+  <!-- fita no topo -->
+  <g transform="rotate(4 76 16)" stroke-linejoin="round">
+    <path d="M48 8l56 1 2 5-2 5 1 6-1 5-56 1-3-6 2-6-2-5z" fill="#F8FAEC" fill-opacity="0.92" stroke="#0F172A" stroke-width="3.5"/>
+    <path d="M58 11l4 16M80 10l4 18M96 11l3 16" stroke="#0F172A" stroke-opacity="0.14" stroke-width="2.5"/>
+  </g>
+</svg>

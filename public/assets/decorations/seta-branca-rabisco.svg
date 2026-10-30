@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 80" role="img">
+  <title>Seta branca rabiscada em estilo adesivo</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 62c14-22 26 4 40-14s28-18 52-10M90 22l20 16-18 16" stroke="#F8FAEC" stroke-width="18"/>
+    <path d="M14 62c14-22 26 4 40-14s28-18 52-10M90 22l20 16-18 16" stroke="#0F172A" stroke-width="10"/>
+    <path d="M14 62c14-22 26 4 40-14s28-18 52-10M90 22l20 16-18 16" stroke="#FFFFFF" stroke-width="4.5"/>
+    <path d="M22 50c6-8 10-8 16-4" stroke="#0F172A" stroke-opacity="0.35" stroke-width="1.5"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 36" role="img" preserveAspectRatio="none">
+  <title>Sublinhado verde de marcador em estilo adesivo</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M10 18c35-6 75 3 115-3s50 3 65-1" stroke="#F8FAEC" stroke-width="24"/>
+    <path d="M10 18c35-6 75 3 115-3s50 3 65-1" stroke="#0F172A" stroke-width="16"/>
+    <path d="M10 18c35-6 75 3 115-3s50 3 65-1" stroke="#22C55E" stroke-width="9"/>
+    <path d="M22 15c40-5 90 2 150-3" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="1.8"/>
+  </g>
+</svg>

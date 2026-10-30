@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 76" role="img">
+  <title>Seta verde de marcador em estilo adesivo</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- halo de adesivo -->
+    <path d="M16 52C52 28 92 22 136 32M118 14l24 18-22 22" stroke="#F8FAEC" stroke-width="24"/>
+    <!-- contorno -->
+    <path d="M16 52C52 28 92 22 136 32M118 14l24 18-22 22" stroke="#0F172A" stroke-width="15"/>
+    <!-- tinta verde -->
+    <path d="M16 52C52 28 92 22 136 32M118 14l24 18-22 22" stroke="#22C55E" stroke-width="8"/>
+    <!-- brilho e falha do marcador -->
+    <path d="M26 44c22-12 44-17 68-16" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="2"/>
+    <path d="M12 58c10-7 20-12 30-16" stroke="#22C55E" stroke-width="3"/>
+  </g>
+</svg>

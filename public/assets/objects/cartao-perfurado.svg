@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 90" role="img">
+  <title>Cartão perfurado</title>
+  <path fill="#F8FAEC" stroke="#0F172A" stroke-width="2" stroke-linejoin="round" d="M14 2h184v86H2V14z"/>
+  <path d="M12 16h176" stroke="#0F172A" stroke-opacity="0.25" stroke-width="1"/>
+  <g fill="#0F172A">
+    <rect x="12" y="24" width="5" height="9" rx="1"/><rect x="36" y="24" width="5" height="9" rx="1"/><rect x="60" y="24" width="5" height="9" rx="1"/><rect x="96" y="24" width="5" height="9" rx="1"/><rect x="132" y="24" width="5" height="9" rx="1"/><rect x="156" y="24" width="5" height="9" rx="1"/><rect x="180" y="24" width="5" height="9" rx="1"/>
+    <rect x="24" y="38" width="5" height="9" rx="1"/><rect x="48" y="38" width="5" height="9" rx="1"/><rect x="84" y="38" width="5" height="9" rx="1"/><rect x="108" y="38" width="5" height="9" rx="1"/><rect x="120" y="38" width="5" height="9" rx="1"/><rect x="168" y="38" width="5" height="9" rx="1"/>
+    <rect x="12" y="52" width="5" height="9" rx="1"/><rect x="36" y="52" width="5" height="9" rx="1"/><rect x="72" y="52" width="5" height="9" rx="1"/><rect x="96" y="52" width="5" height="9" rx="1"/><rect x="144" y="52" width="5" height="9" rx="1"/><rect x="180" y="52" width="5" height="9" rx="1"/>
+    <rect x="24" y="66" width="5" height="9" rx="1"/><rect x="60" y="66" width="5" height="9" rx="1"/><rect x="84" y="66" width="5" height="9" rx="1"/><rect x="108" y="66" width="5" height="9" rx="1"/><rect x="132" y="66" width="5" height="9" rx="1"/><rect x="156" y="66" width="5" height="9" rx="1"/><rect x="168" y="66" width="5" height="9" rx="1"/>
+  </g>
+</svg>

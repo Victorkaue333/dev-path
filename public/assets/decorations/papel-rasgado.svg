@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 184" role="img">
+  <title>Pedaço de papel rasgado em estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <!-- sombra -->
+    <path transform="translate(6 7)" fill="#0F172A" fill-opacity="0.2" d="M14 16l12-5 14 6 16-7 16 6 18-5 18 7 18-6 18 5 18-7 18 6 18-4 18 6 18-7 16 5-1 142-13 6-16-6-18 8-18-7-18 6-18-7-18 8-18-7-18 6-18-7-18 8-18-7-16 6-9-7z"/>
+    <!-- papel com contorno de tinta -->
+    <path fill="#F8FAEC" stroke="#0F172A" stroke-width="5" d="M14 16l12-5 14 6 16-7 16 6 18-5 18 7 18-6 18 5 18-7 18 6 18-4 18 6 18-7 16 5-1 142-13 6-16-6-18 8-18-7-18 6-18-7-18 8-18-7-18 6-18-7-18 8-18-7-16 6-9-7z"/>
+    <!-- fibras do rasgo -->
+    <path d="M26 12l6 5M60 10l5 6M98 11l5 5M136 10l6 6M176 11l5 5M214 12l6 5M38 166l5-5M82 168l4-6M130 166l5-5M178 168l4-6M222 166l5-5" stroke="#0F172A" stroke-opacity="0.35" stroke-width="2"/>
+    <!-- pauta de caderno -->
+    <path d="M28 48h206M28 72h206M28 96h206M28 120h206M28 144h190" stroke="#0F172A" stroke-opacity="0.12" stroke-width="2.5"/>
+    <path d="M22 20l200 1" stroke="#FFFFFF" stroke-opacity="0.8" stroke-width="2"/>
+  </g>
+</svg>

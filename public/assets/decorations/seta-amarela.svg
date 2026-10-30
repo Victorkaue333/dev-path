@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 68" role="img">
+  <title>Seta amarela de marcador em estilo adesivo</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M14 42c36-6 72 2 116-4M106 18l22 18-20 18" stroke="#F8FAEC" stroke-width="22"/>
+    <path d="M14 42c36-6 72 2 116-4M106 18l22 18-20 18" stroke="#0F172A" stroke-width="13"/>
+    <path d="M14 42c36-6 72 2 116-4M106 18l22 18-20 18" stroke="#FBBF24" stroke-width="6.5"/>
+    <path d="M24 38c24-4 46-2 72-3" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="1.8"/>
+    <path d="M10 48c12-3 24-5 36-6" stroke="#FBBF24" stroke-width="2.5"/>
+  </g>
+</svg>

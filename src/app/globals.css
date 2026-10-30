@@ -1,0 +1,333 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================
+   DevPath — Design Tokens
+   Fonte normativa: docs/DESIGN.md
+   Camadas:
+     1. Tokens brutos (--dp-*): paleta, tipografia, raio, sombra, movimento.
+     2. Tokens semânticos (shadcn): --background, --primary, ...
+     3. Registro no Tailwind (@theme inline) para gerar utilitários.
+   ============================================================ */
+
+:root {
+  /* --- Paleta base (referência inicial, não definitiva) --- */
+  --dp-green: #22c55e; /* verde principal */
+  --dp-green-strong: #16a34a; /* verde para texto/ícones sobre papel (contraste AA) */
+  --dp-green-soft: #dcfce7;
+  --dp-green-dark: #0f172a; /* "verde escuro" da identidade = tinta/ink */
+  --dp-ink: var(--dp-green-dark);
+  --dp-ink-soft: #334155;
+  --dp-paper: #f8faec;
+  --dp-paper-strong: #eef2d8;
+  --dp-paper-line: #d9ddc4;
+  --dp-yellow: #fbbf24;
+  --dp-yellow-soft: #fef3c7;
+  --dp-coral: #fb7171;
+  --dp-coral-soft: #fee2e2;
+  --dp-white: #ffffff;
+
+  /* --- Tipografia --- */
+  --dp-font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --dp-font-marker: var(--font-permanent-marker), "Comic Sans MS", cursive;
+  --dp-font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* --- Raios (cantos levemente irregulares lembram papel cortado) --- */
+  --dp-radius-sm: 0.25rem;
+  --dp-radius-md: 0.5rem;
+  --dp-radius-lg: 0.875rem;
+  --dp-radius-paper: 0.75rem 0.5rem 0.875rem 0.375rem;
+
+  /* --- Sombras (papel sobre mesa) --- */
+  --dp-shadow-paper: 0 1px 2px rgb(15 23 42 / 0.08), 0 8px 20px -8px rgb(15 23 42 / 0.18);
+  --dp-shadow-paper-lift: 0 2px 4px rgb(15 23 42 / 0.1), 0 16px 32px -12px rgb(15 23 42 / 0.28);
+  --dp-shadow-sticky: 2px 4px 10px -2px rgb(15 23 42 / 0.25);
+
+  /* --- Espaçamento de seção --- */
+  --dp-section-y: clamp(3rem, 8vw, 6rem);
+  --dp-container: 72rem;
+
+  /* --- Movimento --- */
+  --dp-duration-fast: 150ms;
+  --dp-duration-base: 260ms;
+  --dp-duration-slow: 480ms;
+  --dp-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dp-ease-doodle: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --dp-tilt-1: -1.5deg;
+  --dp-tilt-2: 1deg;
+  --dp-tilt-3: -0.75deg;
+
+  /* --- Tokens semânticos (shadcn/ui) mapeados para a identidade --- */
+  --background: var(--dp-paper);
+  --foreground: var(--dp-ink);
+  --card: var(--dp-white);
+  --card-foreground: var(--dp-ink);
+  --popover: var(--dp-white);
+  --popover-foreground: var(--dp-ink);
+  --primary: var(--dp-green);
+  --primary-foreground: var(--dp-ink);
+  --secondary: var(--dp-paper-strong);
+  --secondary-foreground: var(--dp-ink);
+  --muted: var(--dp-paper-strong);
+  --muted-foreground: var(--dp-ink-soft);
+  --accent: var(--dp-yellow-soft);
+  --accent-foreground: var(--dp-ink);
+  --destructive: #dc2626;
+  --border: var(--dp-paper-line);
+  --input: var(--dp-paper-line);
+  --ring: var(--dp-green-strong);
+  --chart-1: var(--dp-green);
+  --chart-2: var(--dp-yellow);
+  --chart-3: var(--dp-coral);
+  --chart-4: var(--dp-ink-soft);
+  --chart-5: var(--dp-green-strong);
+  --radius: 0.625rem;
+  --sidebar: var(--dp-ink);
+  --sidebar-foreground: var(--dp-paper);
+  --sidebar-primary: var(--dp-green);
+  --sidebar-primary-foreground: var(--dp-ink);
+  --sidebar-accent: #1e293b;
+  --sidebar-accent-foreground: var(--dp-paper);
+  --sidebar-border: #1e293b;
+  --sidebar-ring: var(--dp-green);
+}
+
+/* Tema escuro: previsto, não priorizado no MVP (docs/DESIGN.md). Mantém contraste mínimo. */
+.dark {
+  --background: var(--dp-ink);
+  --foreground: var(--dp-paper);
+  --card: #1e293b;
+  --card-foreground: var(--dp-paper);
+  --popover: #1e293b;
+  --popover-foreground: var(--dp-paper);
+  --primary: var(--dp-green);
+  --primary-foreground: var(--dp-ink);
+  --secondary: #1e293b;
+  --secondary-foreground: var(--dp-paper);
+  --muted: #1e293b;
+  --muted-foreground: #cbd5e1;
+  --accent: #334155;
+  --accent-foreground: var(--dp-paper);
+  --destructive: #f87171;
+  --border: rgb(248 250 236 / 0.12);
+  --input: rgb(248 250 236 / 0.16);
+  --ring: var(--dp-green);
+}
+
+@theme inline {
+  /* Cores semânticas (shadcn) */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Paleta DevPath como utilitários: bg-dp-green, text-dp-ink, border-dp-paper-line... */
+  --color-dp-green: var(--dp-green);
+  --color-dp-green-strong: var(--dp-green-strong);
+  --color-dp-green-soft: var(--dp-green-soft);
+  --color-dp-ink: var(--dp-ink);
+  --color-dp-ink-soft: var(--dp-ink-soft);
+  --color-dp-paper: var(--dp-paper);
+  --color-dp-paper-strong: var(--dp-paper-strong);
+  --color-dp-paper-line: var(--dp-paper-line);
+  --color-dp-yellow: var(--dp-yellow);
+  --color-dp-yellow-soft: var(--dp-yellow-soft);
+  --color-dp-coral: var(--dp-coral);
+  --color-dp-coral-soft: var(--dp-coral-soft);
+
+  /* Tipografia: font-sans, font-marker, font-mono */
+  --font-sans: var(--dp-font-sans);
+  --font-heading: var(--dp-font-sans);
+  --font-marker: var(--dp-font-marker);
+  --font-mono: var(--dp-font-mono);
+
+  /* Raios */
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+
+  /* Sombras: shadow-paper, shadow-paper-lift, shadow-sticky */
+  --shadow-paper: var(--dp-shadow-paper);
+  --shadow-paper-lift: var(--dp-shadow-paper-lift);
+  --shadow-sticky: var(--dp-shadow-sticky);
+
+  /* Movimento: duration-fast, ease-doodle... */
+  --duration-fast: var(--dp-duration-fast);
+  --duration-base: var(--dp-duration-base);
+  --duration-slow: var(--dp-duration-slow);
+  --ease-out-soft: var(--dp-ease-out);
+  --ease-doodle: var(--dp-ease-doodle);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-ring;
+  }
+  /* Acessibilidade: desliga movimento para quem prefere menos animação. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  /* Textura de papel sutil (sem imagem externa; gradientes puros). */
+  .dp-paper-texture {
+    background-image:
+      radial-gradient(rgb(15 23 42 / 0.035) 0.5px, transparent 0.5px),
+      linear-gradient(180deg, rgb(255 255 255 / 0.35), transparent 40%);
+    background-size:
+      6px 6px,
+      100% 100%;
+  }
+  /* Borda "rasgada" aproximada com clip-path (substituível por asset em public/assets/decorations). */
+  .dp-torn-edge {
+    clip-path: polygon(
+      0% 2%,
+      3% 0%,
+      8% 1.5%,
+      14% 0.5%,
+      22% 2%,
+      31% 0%,
+      40% 1.5%,
+      52% 0.5%,
+      61% 2%,
+      70% 0%,
+      79% 1.5%,
+      88% 0.5%,
+      95% 2%,
+      100% 0.5%,
+      100% 98%,
+      96% 100%,
+      90% 98.5%,
+      82% 100%,
+      73% 98%,
+      64% 100%,
+      55% 98.5%,
+      45% 100%,
+      36% 98%,
+      27% 100%,
+      18% 98.5%,
+      10% 100%,
+      4% 98%,
+      0% 100%
+    );
+  }
+  .dp-container {
+    @apply mx-auto w-full px-4 sm:px-6 lg:px-8;
+    max-width: var(--dp-container);
+  }
+  .dp-section {
+    padding-block: var(--dp-section-y);
+  }
+  .dp-marker-underline {
+    background-image: linear-gradient(
+      transparent 62%,
+      var(--dp-yellow) 62%,
+      var(--dp-yellow) 88%,
+      transparent 88%
+    );
+  }
+}
+
+@layer components {
+  /* Fundo da hero: verde-escuro com grade e vinheta (sem imagem externa). */
+  .dp-hero-bg {
+    background-color: #0d2b20;
+    background-image:
+      radial-gradient(ellipse at center, rgb(34 197 94 / 0.1), transparent 60%),
+      linear-gradient(rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      radial-gradient(rgb(0 0 0 / 0.35) 0.6px, transparent 0.6px);
+    background-size:
+      100% 100%,
+      28px 28px,
+      28px 28px,
+      5px 5px;
+  }
+  /* Contorno "tinta" para lettering estilo adesivo. */
+  .dp-ink-outline {
+    -webkit-text-stroke: 0.035em #0f172a;
+    paint-order: stroke fill;
+    text-shadow:
+      0.05em 0.05em 0 #0f172a,
+      0.07em 0.07em 0 rgb(15 23 42 / 0.6);
+  }
+}
+
+@layer components {
+  /* Faixa do mural atrás do cabeçalho nas páginas sem hero (mesma foto da hero, só o topo). */
+  .dp-mural-band {
+    background-color: #0d2b20;
+    background-image: url("/assets/textures/hero-background.webp");
+    background-size: cover;
+    background-position: top center;
+  }
+}
+
+@layer components {
+  /* Faixa de papel rasgado oficial do cabeçalho em 3 fatias: pontas com proporção fixa, miolo estica. */
+  .dp-paper-strip {
+    --dp-strip-cap: 3.9rem; /* ≈ 160/225 × 5.5rem: a ponta rasgada mantém a proporção do arquivo (2137×225) */
+    border-style: solid;
+    border-color: transparent;
+    border-width: 0 var(--dp-strip-cap);
+    border-image-source: url("/assets/objects/faixa-papel-rasgado.webp");
+    border-image-slice: 0 160 0 160 fill;
+    border-image-width: 0 var(--dp-strip-cap);
+    border-image-repeat: stretch;
+  }
+}

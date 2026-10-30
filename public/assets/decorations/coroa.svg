@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 84" role="img">
+  <title>Coroa amarela em estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <!-- halo de adesivo -->
+    <path d="M18 58L11 24l20 15L48 10l17 29 20-15-7 34z M18 58h60v12H18z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="16"/>
+    <!-- corpo -->
+    <path d="M18 58L11 24l20 15L48 10l17 29 20-15-7 34z" fill="#FBBF24" stroke="#0F172A" stroke-width="6"/>
+    <path d="M18 58h60v12H18z" fill="#FBBF24" stroke="#0F172A" stroke-width="6"/>
+    <!-- pontas -->
+    <circle cx="11" cy="23" r="4" fill="#FBBF24" stroke="#0F172A" stroke-width="4"/>
+    <circle cx="48" cy="9" r="4.5" fill="#FBBF24" stroke="#0F172A" stroke-width="4"/>
+    <circle cx="85" cy="23" r="4" fill="#FBBF24" stroke="#0F172A" stroke-width="4"/>
+    <!-- imperfeições de marcador -->
+    <path d="M24 61.5h22" stroke="#0F172A" stroke-opacity="0.35" stroke-width="2"/>
+    <path d="M27 49c4-6 7-9 10-11" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="3"/>
+  </g>
+</svg>

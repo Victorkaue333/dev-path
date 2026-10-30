@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 184 60" role="img">
+  <title>Sequência binária em estilo adesivo</title>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M22 16c-7 0-7 28 0 28s7-28 0-28M40 20l5-4v28M39 44h12M66 16c-7 0-7 28 0 28s7-28 0-28M88 16c-7 0-7 28 0 28s7-28 0-28M106 20l5-4v28M105 44h12M132 16c-7 0-7 28 0 28s7-28 0-28M150 20l5-4v28M149 44h12" stroke="#F8FAEC" stroke-width="14"/>
+    <path d="M22 16c-7 0-7 28 0 28s7-28 0-28M40 20l5-4v28M39 44h12M66 16c-7 0-7 28 0 28s7-28 0-28M88 16c-7 0-7 28 0 28s7-28 0-28M106 20l5-4v28M105 44h12M132 16c-7 0-7 28 0 28s7-28 0-28M150 20l5-4v28M149 44h12" stroke="#0F172A" stroke-width="8"/>
+    <path d="M22 16c-7 0-7 28 0 28s7-28 0-28M40 20l5-4v28M39 44h12M66 16c-7 0-7 28 0 28s7-28 0-28M88 16c-7 0-7 28 0 28s7-28 0-28M106 20l5-4v28M105 44h12M132 16c-7 0-7 28 0 28s7-28 0-28M150 20l5-4v28M149 44h12" stroke="#F8FAEC" stroke-width="2.8"/>
+    <path d="M60 24c-1 4-1 8 0 12" stroke="#22C55E" stroke-width="2"/>
+  </g>
+</svg>

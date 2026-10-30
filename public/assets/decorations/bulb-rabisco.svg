@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 104" role="img">
+  <title>Lâmpada de ideia em estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <!-- halo -->
+    <path d="M40 14C26 14 18 24 19 35c.5 8 7 12 9 20h24c2-8 8.5-12 9-20 1-11-7-21-21-21z M29 58h22v10l-4 6H33l-4-6z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="16"/>
+    <!-- raios -->
+    <path d="M14 14l6 5M66 14l-6 5M6 36h8M66 36h8M40 2v6" fill="none" stroke="#F8FAEC" stroke-width="12"/>
+    <path d="M14 14l6 5M66 14l-6 5M6 36h8M66 36h8M40 2v6" fill="none" stroke="#0F172A" stroke-width="5"/>
+    <!-- vidro -->
+    <path d="M40 14C26 14 18 24 19 35c.5 8 7 12 9 20h24c2-8 8.5-12 9-20 1-11-7-21-21-21z" fill="#FBBF24" stroke="#0F172A" stroke-width="5.5"/>
+    <!-- filamento -->
+    <path d="M34 40c1 6 11 6 12 0M37 55l1-12M43 55l-1-12" fill="none" stroke="#0F172A" stroke-width="3"/>
+    <!-- rosca -->
+    <path d="M29 58h22v10l-4 6H33l-4-6z" fill="#F8FAEC" stroke="#0F172A" stroke-width="5"/>
+    <path d="M31 64h18M33 70h14" stroke="#0F172A" stroke-opacity="0.5" stroke-width="2.5"/>
+    <!-- brilho -->
+    <path d="M27 30c2-6 6-9 11-10" fill="none" stroke="#FFFFFF" stroke-opacity="0.85" stroke-width="3"/>
+  </g>
+</svg>

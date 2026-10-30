@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 144 52" role="img">
+  <title>Fita adesiva amarela em estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <path d="M10 8l124 2 3 8-3 7 3 8-2 11L10 44 6 35l3-9-3-9z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="12"/>
+    <path d="M10 8l124 2 3 8-3 7 3 8-2 11L10 44 6 35l3-9-3-9z" fill="#FBBF24" stroke="#0F172A" stroke-width="4.5"/>
+    <path d="M22 13l8 24M44 12l7 26M70 13l7 24M96 12l8 26M120 13l8 24" stroke="#0F172A" stroke-opacity="0.16" stroke-width="3"/>
+    <path d="M16 12l112 2" stroke="#FFFFFF" stroke-opacity="0.6" stroke-width="2"/>
+  </g>
+</svg>

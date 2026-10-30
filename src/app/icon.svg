@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>Favicon DevPath em fundo escuro</title>
+  <circle cx="32" cy="32" r="30" fill="#0F172A" stroke="#F8FAEC" stroke-width="3"/>
+  <g transform="translate(13 12)" stroke-linejoin="round" stroke-linecap="round">
+    <path d="M6 4h18l12 12-12 12H16v16H6z" fill="#22C55E" stroke="#F8FAEC" stroke-width="3.5"/>
+    <path d="M16 11v10h6l5-5-5-5z" fill="#0F172A" stroke="#F8FAEC" stroke-width="2.2"/>
+    <path d="M9.5 8v12" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="2"/>
+  </g>
+</svg>

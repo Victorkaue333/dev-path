@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 104 124" role="img">
+  <title>Ícone DevPath: letra P com seta e coroa, estilo adesivo</title>
+  <g stroke-linejoin="round" stroke-linecap="round">
+    <!-- halo (coroa + P) -->
+    <path d="M30 28L26 10l10 8 8-12 8 12 10-8-4 18z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="14"/>
+    <path d="M24 36h34l22 22-22 22H42v30H24z" fill="#F8FAEC" stroke="#F8FAEC" stroke-width="16"/>
+    <!-- P -->
+    <path d="M24 36h34l22 22-22 22H42v30H24z" fill="#22C55E" stroke="#0F172A" stroke-width="7"/>
+    <path d="M42 50v16h12l8-8-8-8z" fill="#F8FAEC" stroke="#0F172A" stroke-width="5"/>
+    <path d="M30 44v26" stroke="#FFFFFF" stroke-opacity="0.75" stroke-width="3.5"/>
+    <!-- coroa -->
+    <path d="M30 28L26 10l10 8 8-12 8 12 10-8-4 18z" fill="#FBBF24" stroke="#0F172A" stroke-width="5"/>
+    <circle cx="26" cy="9" r="2.6" fill="#FBBF24" stroke="#0F172A" stroke-width="2.5"/>
+    <circle cx="44" cy="5" r="2.8" fill="#FBBF24" stroke="#0F172A" stroke-width="2.5"/>
+    <circle cx="62" cy="9" r="2.6" fill="#FBBF24" stroke="#0F172A" stroke-width="2.5"/>
+  </g>
+</svg>
