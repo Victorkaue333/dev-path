@@ -1,0 +1,15 @@
+# pnpm 11 bloqueia scripts de pós-instalação por padrão.
+# Liberamos somente o que o projeto precisa; o restante fica negado de forma explícita.
+allowBuilds:
+  sharp: false
+  unrs-resolver: false
+  esbuild: true
+  prisma: true
+  "@prisma/engines": true
+  "@prisma/client": true
+minimumReleaseAgeExclude:
+  - framer-motion@14.8.0
+  - jose@6.2.14
+  - lucide-react@1.64.0
+  - motion-dom@14.8.0
+  - motion@14.8.0
