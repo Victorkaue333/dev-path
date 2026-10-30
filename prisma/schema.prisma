@@ -1,0 +1,327 @@
+// ============================================================
+// DevPath — schema inicial (Prisma 7 / PostgreSQL)
+// Documentação: docs/DATABASE.md
+// Estado: schema desenhado; migrations ainda NÃO geradas (exigem banco acessível).
+// ============================================================
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ------------------------------------------------------------
+// Enums
+// ------------------------------------------------------------
+
+/// Estado editorial compartilhado por todo conteúdo público.
+enum PublicationStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
+
+enum SkillLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+}
+
+enum TechnologyCategory {
+  LANGUAGE
+  FRAMEWORK
+  LIBRARY
+  DATABASE
+  TOOL
+  PLATFORM
+  CONCEPT
+}
+
+enum EditorialKind {
+  ARTICLE
+  GUIDE
+  PAGE
+}
+
+enum AdminRole {
+  OWNER
+  EDITOR
+}
+
+/// Eventos de navegação agregáveis. Nenhum identificador pessoal é armazenado.
+enum AnalyticsEventType {
+  PAGE_VIEW
+  ROADMAP_CLICK
+  COURSE_CLICK
+  PROJECT_CLICK
+  CAREER_NAVIGATION
+  EXTERNAL_LINK_CLICK
+}
+
+// ------------------------------------------------------------
+// Conteúdo educacional
+// ------------------------------------------------------------
+
+model Career {
+  id               String            @id @default(cuid())
+  slug             String            @unique
+  title            String
+  /// Nome curto para cartões compactos (ex.: "Frontend"). Opcional; cai no título.
+  shortTitle       String?
+  /// Frase de impacto curta (ex.: "Interfaces que inspiram."). Opcional.
+  tagline          String?
+  shortDescription String
+  description      String
+  /// Nome do ícone (Lucide) usado na interface.
+  icon             String?
+  /// Token de cor do Design System (ex.: "green", "yellow", "coral").
+  accent           String?
+  order            Int               @default(0)
+  status           PublicationStatus @default(DRAFT)
+  publishedAt      DateTime?
+  createdAt        DateTime          @default(now())
+  updatedAt        DateTime          @updatedAt
+
+  roadmaps     Roadmap[]
+  projects     Project[]
+  technologies CareerTechnology[]
+
+  @@index([status, order])
+}
+
+model Roadmap {
+  id          String            @id @default(cuid())
+  slug        String            @unique
+  title       String
+  description String
+  level       SkillLevel        @default(BEGINNER)
+  order       Int               @default(0)
+  status      PublicationStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  careerId String
+  career   Career        @relation(fields: [careerId], references: [id], onDelete: Restrict)
+  steps    RoadmapStep[]
+
+  @@index([careerId, status, order])
+}
+
+model RoadmapStep {
+  id          String   @id @default(cuid())
+  title       String
+  description String
+  order       Int
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  roadmapId String
+  roadmap   Roadmap           @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  topics    RoadmapStepTopic[]
+
+  @@unique([roadmapId, order])
+}
+
+/// Tópico é uma taxonomia compartilhada: o mesmo tópico pode aparecer em etapas de roadmaps diferentes
+/// e é o elo entre roadmaps e cursos.
+model Topic {
+  id          String   @id @default(cuid())
+  slug        String   @unique
+  title       String
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  steps   RoadmapStepTopic[]
+  courses CourseTopic[]
+}
+
+model RoadmapStepTopic {
+  stepId  String
+  topicId String
+  order   Int         @default(0)
+  step    RoadmapStep @relation(fields: [stepId], references: [id], onDelete: Cascade)
+  topic   Topic       @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@id([stepId, topicId])
+  @@index([stepId, order])
+}
+
+model Course {
+  id              String            @id @default(cuid())
+  slug            String            @unique
+  title           String
+  description     String
+  /// Nome do provedor/plataforma (ex.: documentação oficial, universidade, canal).
+  provider        String
+  url             String
+  /// Código BCP 47 (ex.: "pt-BR", "en").
+  language        String            @default("pt-BR")
+  level           SkillLevel        @default(BEGINNER)
+  /// O DevPath só lista cursos gratuitos; o campo existe para auditoria editorial.
+  isFree          Boolean           @default(true)
+  isOfficialDocs  Boolean           @default(false)
+  durationMinutes Int?
+  status          PublicationStatus @default(DRAFT)
+  publishedAt     DateTime?
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  topics CourseTopic[]
+
+  @@index([status, level])
+}
+
+model CourseTopic {
+  courseId String
+  topicId  String
+  course   Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+  topic    Topic  @relation(fields: [topicId], references: [id], onDelete: Cascade)
+
+  @@id([courseId, topicId])
+}
+
+model Project {
+  id             String            @id @default(cuid())
+  slug           String            @unique
+  title          String
+  description    String
+  level          SkillLevel        @default(BEGINNER)
+  estimatedHours Int?
+  /// Critérios de conclusão em Markdown.
+  acceptance     String?
+  status         PublicationStatus @default(DRAFT)
+  publishedAt    DateTime?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  careerId     String?
+  career       Career?             @relation(fields: [careerId], references: [id], onDelete: SetNull)
+  technologies ProjectTechnology[]
+
+  @@index([status, level])
+}
+
+model Technology {
+  id          String             @id @default(cuid())
+  slug        String             @unique
+  name        String
+  category    TechnologyCategory
+  description String?
+  website     String?
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+
+  careers  CareerTechnology[]
+  projects ProjectTechnology[]
+}
+
+model CareerTechnology {
+  careerId     String
+  technologyId String
+  /// 1 (essencial) a 3 (complementar).
+  importance   Int        @default(1)
+  career       Career     @relation(fields: [careerId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([careerId, technologyId])
+}
+
+model ProjectTechnology {
+  projectId    String
+  technologyId String
+  project      Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  technology   Technology @relation(fields: [technologyId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, technologyId])
+}
+
+/// Figuras históricas da computação ("Lendas da TI").
+model HistoricalFigure {
+  id            String            @id @default(cuid())
+  slug          String            @unique
+  name          String
+  bornYear      Int?
+  diedYear      Int?
+  summary       String
+  biography     String
+  contributions String[]
+  /// Caminho em public/assets/characters/ (o asset precisa existir; ver docs/assets/README.md).
+  imagePath     String?
+  status        PublicationStatus @default(DRAFT)
+  publishedAt   DateTime?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+}
+
+model EditorialContent {
+  id          String            @id @default(cuid())
+  slug        String            @unique
+  title       String
+  excerpt     String?
+  body        String
+  kind        EditorialKind     @default(ARTICLE)
+  status      PublicationStatus @default(DRAFT)
+  publishedAt DateTime?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+
+  authorId String?
+  author   AdminUser? @relation(fields: [authorId], references: [id], onDelete: SetNull)
+
+  @@index([kind, status])
+}
+
+// ------------------------------------------------------------
+// Administração
+// ------------------------------------------------------------
+
+model AdminUser {
+  id           String    @id @default(cuid())
+  email        String    @unique
+  name         String
+  /// Hash bcrypt. Nunca armazenar senha em texto puro.
+  passwordHash String
+  role         AdminRole @default(EDITOR)
+  isActive     Boolean   @default(true)
+  lastLoginAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  editorials EditorialContent[]
+}
+
+// ------------------------------------------------------------
+// Analytics (sem dados pessoais)
+// ------------------------------------------------------------
+
+/// Evento bruto, sem IP, sem user-agent completo e sem identificador de visitante.
+model AnalyticsEvent {
+  id           String             @id @default(cuid())
+  type         AnalyticsEventType
+  /// Caminho interno (sem query string).
+  path         String
+  /// Slug do alvo (carreira, roadmap, curso, projeto), quando aplicável.
+  targetSlug   String?
+  /// Host de destino em cliques externos (somente domínio, sem path).
+  externalHost String?
+  occurredAt   DateTime           @default(now())
+
+  @@index([type, occurredAt])
+  @@index([path, occurredAt])
+}
+
+/// Agregado diário para o painel; é a tabela que o dashboard deve consultar.
+model AnalyticsDailyAggregate {
+  id    String             @id @default(cuid())
+  date  DateTime           @db.Date
+  type  AnalyticsEventType
+  path  String
+  count Int                @default(0)
+
+  @@unique([date, type, path])
+}
