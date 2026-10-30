@@ -1,0 +1,55 @@
+# Nomes dos componentes detectados em docs/assets/references/folha-cultura-dev.png
+# na ordem de leitura com: --fundo=verde --min-area=2500 --pad=10 --raio=1 --erosao=12
+# `-` = componente pulado (fragmento, ou vizinhos fundidos recortados depois com --caixas;
+# ver o comando completo em docs/assets/README.md, seção "Recortar uma folha de adesivos").
+logo-python
+logo-javascript
+logo-typescript
+logo-react
+logo-nodejs
+logo-nextjs
+logo-java
+logo-cpp
+logo-rust
+logo-go
+logo-php
+logo-kotlin
+logo-ruby
+logo-html5
+logo-css3
+logo-sass
+logo-tailwindcss
+logo-docker
+logo-git
+logo-github
+sticker-grafo-de-commits
+logo-aws
+logo-postgresql
+logo-mysql
+logo-mongodb
+logo-redis
+logo-linux
+logo-vscode
+-
+sticker-codigo-tag
+sticker-arrow-function
+sticker-colchetes
+sticker-todo
+sticker-barras-comentario
+-
+-
+-
+-
+sticker-cursor-mao
+sticker-cerebro-ia
+sticker-if-idea
+-
+-
+sticker-docker-containers
+sticker-engrenagens
+-
+sticker-ampulheta
+sticker-compiling
+sticker-grafico-de-barras
+sticker-trofeu-hello-world
+sticker-open-source

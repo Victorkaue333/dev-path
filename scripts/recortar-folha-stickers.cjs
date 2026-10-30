@@ -16,7 +16,9 @@
  *     componente; a linha `-` pula o componente, útil quando a detecção fundiu vizinhos).
  *  4. Em cada recorte, torna transparente tudo que não pertence ao componente (fundo, vizinhos,
  *     pontes, rabiscos) e suaviza 1 px de borda.
- *  5. Modo manual: --caixas="x,y,w,h[,erosao];..." recorta caixas dadas (sem detecção global).
+ *  5. Modo manual: --caixas="x,y,w,h[,erosao[,preencher]];..." recorta caixas dadas (sem detecção
+ *     global). O 6º valor = 1 mantém opacas as regiões internas que não tocam a borda do recorte
+ *     (interiores verde-escuros iguais ao mural, ex.: adesivo do binário).
  *     Dentro de cada caixa roda o mesmo pipeline (dilata, erode com a erosão da caixa, rotula) e
  *     mantém só o componente que contém o centro da caixa (ou o maior). Use para vizinhos
  *     encostados que a detecção global fundiu; aumente a erosão da caixa para separá-los.
@@ -77,8 +79,8 @@ const BOXES = flags.caixas
       .map((s) => s.trim())
       .filter(Boolean)
       .map((s) => {
-        const [x, y, w, h, e] = s.split(",").map(Number);
-        return { x, y, w, h, erosion: Number.isFinite(e) ? e : EROSION };
+        const [x, y, w, h, e, fill] = s.split(",").map(Number);
+        return { x, y, w, h, erosion: Number.isFinite(e) ? e : EROSION, fill: fill === 1 };
       })
   : null;
 const prefix = flags.prefixo ?? path.basename(input).replace(/\.[^.]+$/, "");
@@ -417,6 +419,18 @@ async function writeGrid(files, dir, name) {
       const chosen = center ? comps.find((c) => c.id === center) : comps.sort((a, b) => b.area - a.area)[0];
       const cleared = new Uint8Array(w * h);
       for (let d = 0; d < w * h; d++) if (label[d] !== chosen.id) cleared[d] = 1;
+      if (bx.fill) {
+        // 6º parâmetro da caixa = 1: regiões limpas que não tocam a borda do recorte são "buracos"
+        // do adesivo (interior verde-escuro igual ao mural) e voltam a ficar opacas.
+        const { label: hl, count: hc } = labelComponents(cleared, w, h);
+        const touches = new Uint8Array(hc + 1);
+        for (let d = 0; d < w * h; d++) {
+          const x = d % w;
+          const y = (d / w) | 0;
+          if (hl[d] && (x === 0 || y === 0 || x === w - 1 || y === h - 1)) touches[hl[d]] = 1;
+        }
+        for (let d = 0; d < w * h; d++) if (hl[d] && !touches[hl[d]]) cleared[d] = 0;
+      }
       const file = path.join(outDir, `${name}.webp`);
       const res = await exportCrop(out, cleared, w, h, file);
       results.push(file);
